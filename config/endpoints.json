@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Example Website",
+    "url": "https://example.com",
+    "type": "website",
+    "expected_status": 200
+  },
+  {
+    "name": "Example API",
+    "url": "https://api.example.com/health",
+    "type": "api",
+    "expected_status": 200,
+    "notify": ["api-team@example.com"],
+    "enabled": false
+  }
+]

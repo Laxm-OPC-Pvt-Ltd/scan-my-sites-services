@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scan-my-sites"
+dynamic = ["version"]
+description = "Website/API uptime monitor with ZeptoMail alerts on down/up transitions"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "requests>=2.31,<3",
+    "python-dotenv>=1.0,<2",
+    "tzdata>=2024.1; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+anvil = ["anvil-uplink>=0.5"]
+dev = ["pytest>=8", "pytest-cov>=5", "responses>=0.25", "ruff>=0.6", "mypy>=1.11", "types-requests"]
+
+[project.scripts]
+scan-my-sites = "scan_my_sites.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "scan_my_sites.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+src = ["src", "tests"]
+extend-exclude = ["deploy/anvil/server_code"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.10"
+files = ["src"]
+strict = true

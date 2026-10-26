@@ -1,0 +1,4 @@
+# Runtime dependencies (mirrors [project.dependencies] in pyproject.toml)
+requests>=2.31,<3
+python-dotenv>=1.0,<2
+tzdata>=2024.1; sys_platform == "win32"
