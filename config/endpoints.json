@@ -1,13 +1,13 @@
 [
   {
     "name": "Example Website",
-    "url": "https://example.com",
+    "url": "https://nadiary.thelaxm.com",
     "type": "website",
     "expected_status": 200
   },
   {
     "name": "Example API",
-    "url": "https://api.example.com/health",
+    "url": "https://nadiaryapi.thelaxm.com/health",
     "type": "api",
     "expected_status": 200,
     "notify": ["api-team@example.com"],
