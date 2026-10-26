@@ -1,16 +1,14 @@
 [
   {
-    "name": "Example Website",
+    "name": "Nadiary Website",
     "url": "https://nadiary.thelaxm.com",
     "type": "website",
     "expected_status": 200
   },
   {
-    "name": "Example API",
+    "name": "Nadiary API",
     "url": "https://nadiaryapi.thelaxm.com/health",
     "type": "api",
-    "expected_status": 200,
-    "notify": ["api-team@example.com"],
-    "enabled": false
+    "expected_status": 200
   }
 ]
