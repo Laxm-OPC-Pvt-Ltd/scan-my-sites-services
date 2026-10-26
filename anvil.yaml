@@ -1,3 +1,10 @@
+db_schema:
+  table_1:
+    client: none
+    columns: []
+    indexes: []
+    server: full
+    title: Table 1
 metadata: {description: Scan my sites and APIs, title: My Eyes on Cloud}
 native_deps:
   head_html: |2
@@ -15,3 +22,4 @@ services:
 - client_config: {enable_v2: true}
   server_config: {}
   source: /runtime/services/tables.yml
+uplink_visible: true
