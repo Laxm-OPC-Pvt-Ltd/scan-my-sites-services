@@ -1,10 +1,86 @@
 db_schema:
-  table_1:
+  endpoint_state:
     client: none
-    columns: []
+    columns:
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: name
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: data
+      type: simpleObject
     indexes: []
     server: full
-    title: Table 1
+    title: endpoint_state
+  endpoints:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: name
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: url
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: type
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: expected_status
+      type: number
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: notify
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: enabled
+      type: bool
+    indexes: []
+    server: full
+    title: endpoints
+  monitoring_history:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: endpoint_name
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: url
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: endpoint_type
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: status
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: http_status
+      type: number
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: response_time
+      type: number
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: error_message
+      type: string
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: timestamp
+      type: datetime
+    indexes: []
+    server: full
+    title: monitoring_history
 metadata: {description: Scan my sites and APIs, title: My Eyes on Cloud}
 native_deps:
   head_html: |2
@@ -18,8 +94,40 @@ runtime_options:
   server_spec: {}
   server_version: python3-sandbox
   version: 2
+secrets:
+  ALERT_RECIPIENTS:
+    type: secret
+    value:
+      LJZF7IBEMHXCSQUW: {? '' : tfkD/VMxEfnRKgnSNf74v0h3F7dmrBCKof4sTKLbtP0Nv/oZbUCxOs7Ir2hHrKTbqlZTrmD0w89aCHbzkrzom5gup9/gUryliEj5vn2eO5vP8kAMgMx/mQS60xyMc9hwYxjWLPSPORkkxAbmEBdjPJwMNXEZ1toNaU0f0HboJlXVQ57fJfyzwF5ZYwFOAW37vAwxpPAEmmYaaJDxYxI=}
+  ALERT_THRESHOLD:
+    type: secret
+    value:
+      LJZF7IBEMHXCSQUW: {? '' : U41aJ/d3Qz7ugZHBbSChiD3YvEfrbyhC4mjDljtzwRPb2Y6TojMwcnWVA/umeicErEgXhqAs4skIzD6rykyCHDcWHFXhoqC+Shmwi3L/OtlpRLHSQw2o0roALopljzfgDKRxos6w36wx8Jp9TSEdHJBdltDmN3INVr4SBwfOpzk97N9mmne0DAd5EKBfBh8BhA==}
+  DISPLAY_TIMEZONE:
+    type: secret
+    value:
+      LJZF7IBEMHXCSQUW: {? '' : Kf/tIAPHQmlZtI8M2eeZnEOQ+S64bYKcKYMvDxkRwM0t3+HpLQmlWhBMRTvIL0ti8+okMB2ApC56s9KdrEO7QS4wCA7qJ8/jRcF6jPR1ZQ7tsvPAqepQnZ2UTfIanaQ3vf1yqjNhbK1ysTLTTCkh7ASgTRDjhLwbe/ZvL/Us2/nlWZSdSl1yYwqmxV1/DjasFjQgnz168WglJg5+yDknWNec}
+  ZEPTO_FROM_EMAIL:
+    type: secret
+    value:
+      LJZF7IBEMHXCSQUW: {? '' : U8uFCKdAkZ2F+cm3y385AMCXQuOl8SQscuBLiz9elzhyo4AV/jV8z08Oatj5+OiubqFh4ykgTa7t/IGzUAAuiQn1Iv5SeqbxWdhtsIoNqrU7WVfNmlDJ/uf804uPxE0IIfsyhIsocNr++JuzdcZus9PFlTD5fLld1tvVwDKnMgCtrs+YBUvTPqifmXH/MgxGXVNn4YsBy/eOnpxBkfOE2QvBNjY=}
+  ZEPTO_FROM_NAME:
+    type: secret
+    value:
+      LJZF7IBEMHXCSQUW: {? '' : cByn4bYIvJyXQX8GAEnSNSXqJ/an7zG3VdT5zVsV8g6S2Dhuli5JAky2PtO/8Zr2DehA2c4bs5H6N9wqffq2C731qWajcXJ9E10YkPmImDUJQQ102KKGGj+dMmJfrtPtIQ5KT+MlT2+a1FFSsbBquXxS2bwr81fPDKncowIOriyiULkMUdJH8t1ycnM42G70gLQhw0slQY9maWQ=}
+  ZEPTO_TOKEN:
+    type: secret
+    value:
+      LJZF7IBEMHXCSQUW: {? '' : zKiMzvOh/ArAlOJx9boXMrvzpytd2IMXDHnqsdATGyxqUsL819AQn7FJsQ6jkTwGmcJXStjTud83UJXpJ4Sufuxdt5kRuHbwTmBDThx6yKMsVynnk036uOlBm8OZHMayLI4WR5n0tSIX4rh2aI1HX8RAcI0CmQXXRZfGTb39w/bL+EIUjmNTW5bnZkp4sPWgXVDN1PMqBAh3rEDo/O6rifpq+nVEhO7YRqdHEuQMVmiYfjcbntDjrHQvAtWck0djwiUBTKeJ+wi9+mFHmq62lfTj1TlAmOAQduWKK1ZbQRnHSIdOeDzZfNc+pR50IQIKveUhIIOMgFufBw4f5NCFmN0HTy6WLZgPTqRqvVCrxLc06+zUNGVu5zsnaMjzuZJWO04m037Kwt3TaeZQgBxzF+W61A==}
+  ZEPTO_URL:
+    type: secret
+    value:
+      LJZF7IBEMHXCSQUW: {? '' : khjVDTjNfkyvopVKEqECWJTQ3AVZ3RvQv0iqOB8piPl5uug5PzKIyXrSG+8Ct8OaR9ll9vSlQ49MrZv1bhAVjSNFt3AZ/JC4xldhXMNP5inILWkqoO4kZWM4rK2BgRFe/lE3F5E8HV6Rv3g7jlwEcBko4FwWvtdSV0pLx3AVYtbEswjz17fOvIYJXGNaUDh3J+oto6oD6LF8ouVg}
 services:
 - client_config: {enable_v2: true}
   server_config: {}
   source: /runtime/services/tables.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/anvil/secrets.yml
 uplink_visible: true
